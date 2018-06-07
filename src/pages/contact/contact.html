@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Contact
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item-sliding *ngFor="let c of countries">
+            
+          <ion-item >
+            <ion-avatar item-left>
+              <img src="{{c.flag}}">
+            </ion-avatar>
+            <h2>{{c.name}}</h2>
+            <p>Capital: {{c.capital}}, Region: {{c.region}}</p>
+          </ion-item>
+          <ion-item-options side="right">
+              <button ion-button color="primary" (click)="viewDetail(c)">
+                <ion-icon name="text"></ion-icon>
+                상세
+              </button>            
+          </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>    
+
+          
+      <!-- <pre>{{ countries | json }}</pre> -->
+</ion-content>

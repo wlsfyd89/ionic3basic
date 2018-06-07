@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ 
+  <div class="panel-body">
+    <h4>속성 바인딩</h4>
+    Name: <input type="text" class="form-control" value="name"><br>
+    Name: <input type="text" class="form-control" [value]="name"><br>
+    Name: <input type="text" class="form-control" [attr.value]="name"><br>
+    Add: <input type="text" class="form-control" data-bind-value="name"><br>
+    Age: <input type="text" class="form-control"><br>
+  </div>
+  <div class="panel-body">
+    <!-- Page 234 -->
+    <!-- 
+        angular event는 javascript의 이벤트 onClick 등의 이름에서 on을 빼고
+        이름만 ()로 묶어 사용한다 또는 on-click.
+        $event => JavaScript의 event의 wrapper class
+    -->
+    onChange(event): <input type="text" class="form-control" [value]="name" 
+            (input)="onChange($event)">
+  </div>
+  <div class="panel-body">  
+    ngModel: <input type="text" class="form-control" [(ngModel)]="name" >
+  </div>
+  <div class="panel-body">  
+    <button ion-button block   (click)="change()">change</button>
+  </div>
+  <br>
+  <select class="form-control" [(ngModel)]="name">
+    <!-- item => {name: 'HongGilDong', age: 20, address: 'Seoul'} -->
+    <option *ngFor="let item of students" [attr.value]="item.name">{{item.name}}</option>
+  </select>
+  <br>
+  <br>
+  <span *ngFor="let item of students">
+      <input type="radio" [value]="item.name" [(ngModel)]="name">{{item.name}}
+  </span>
+  <br>
+  <div class="panel-body">
+    <h4>ngIf: {{gender}}</h4>
+     <select [(ngModel)]="gender">
+           <option value='male'>Male</option>
+           <option value='female'>Female</option>
+     </select>
+     
+     <!-- Dom에서 삭제(false) 또는 생성(true)한다 -->
+      <span *ngIf="gender === 'male'">Male</span>
+      <span *ngIf="gender === 'female'">Female</span>
+
+      <!-- DOM은 그대로 두고 CSS로 표시(fasle) / 숨김(true) -->
+      <span [hidden]="gender !== 'male'">Male</span>
+      <span [hidden]="gender !== 'female'">Female</span>
+</div>
+
+<br>
+</ion-content>

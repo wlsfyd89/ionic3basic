@@ -1,0 +1,62 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+        <!-- 로그인 화면 영역
+          <ion-list>            
+              <ion-item>
+                <ion-input type="text" placeholder="username" [(ngModel)] = "username"></ion-input>
+              </ion-item>
+            
+              <ion-item>
+                <ion-input type="password" placeholder="Password"  [(ngModel)] = "userpassword"></ion-input>
+              </ion-item>
+            
+            </ion-list>        
+        <div padding>
+          <button ion-button block (click) = "login()">Sign In</button>
+        </div>         -->
+
+        <form [formGroup]="userForm" >
+
+          <ion-item>
+            <ion-label floating>ID</ion-label>
+            <ion-input formControlName="userid" type="text"></ion-input>
+          </ion-item>
+          <div *ngIf="!userForm.controls.userid.valid && userForm.controls.userid.dirty"
+            class="validator-error">
+                 Please enter a USER ID<br>
+                 (길이 4~10,대문자,소문자,숫자 가능)
+          </div>
+          <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input formControlName="password" type="password"></ion-input>
+          </ion-item>  
+          <div *ngIf="!userForm.controls.password.valid && userForm.controls.password.dirty"
+            class="validator-error">
+            Please enter a valid password<br>(길이 5이상, 숫자+대문자+소문자)
+          </div>
+          <ion-row>
+              <ion-col text-center>
+                <button ion-button block color="secondary" [disabled]="!userForm.valid" (click)="login()">
+                  Sign in
+                </button>
+              </ion-col>
+            </ion-row>                 
+          
+        </form>
+        <pre>{{ userForm.value | json }}</pre>
+        <pre>{{ userForm.status }}</pre>        
+
+</ion-content>

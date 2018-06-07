@@ -1,0 +1,40 @@
+<ion-grid no-padding no-margin class="rating">
+    <ion-row>
+        <ion-col text-center *ngFor="let star of stars; let i = index" tappable (click)="starClicked(i)">
+            <ion-icon [name]="star"></ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+
+
+  <!-- <span *ngIf="rating" class="review">  
+    <ion-icon name="star" *ngIf="rating > 0"></ion-icon>
+    <ion-icon name="star" *ngIf="rating > 1"></ion-icon>
+    <ion-icon name="star" *ngIf="rating > 2"></ion-icon>
+    <ion-icon name="star" *ngIf="rating > 3"></ion-icon>
+    <ion-icon name="star" *ngIf="rating > 4"></ion-icon>
+    <span>{{ rating }} stars</span>
+  </span> -->
+  
+
+  <!-- <p>
+    <span *ngFor="let star of stars; let i = index"
+          class="starrating glyphicon glyphicon-star"
+          [class.glyphicon-star-empty]="star">
+    </span>
+      <span>{{ rating }} stars</span>
+    </p> -->
+
+<!-- <p>
+  <span *ngFor="let star of stars; let i = index">        
+        <i style="font-size: 50px;" [ngClass]="index < _rating ? 'glyphicon-star' : 'glyphicon-star-empty'"></i>
+  </span>
+    <span>{{ _rating }} stars</span>
+</p> -->
+
+<!-- <span tabindex="0">
+  <template ngFor #range [ngForOf]="maxStars" #index="index">
+    <span class="sr-only">({{ index < _rating ? '*' : ' ' }})</span>
+    <i style="font-size: 50px;" gold class="glyphicon" [ngClass]="index < rating ? 'glyphicon-star' : 'glyphicon-star-empty'"></i>
+  </template>
+</span> -->
